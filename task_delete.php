@@ -1,15 +1,24 @@
 <?php
 
-$taskId = $_POST['taskId'];
-$title = $_POST['title'];
-$description = $_POST['description'];
+session_start();
 
-include 'db_connection.php';
-
-$sql = "UPDATE tasks SET (title = '$title', description = '$description') WHERE id = $taskId";
-
-if ($conn->query($sql) === TRUE) {
-    echo json_encode(array('status' => $status));
+if (!isset($_SESSION["userId"])) {
+    header("Location: index.php");
+    exit;
 }
 
-$conn->close();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    include 'db_connection.php';
+
+    $taskId = $_POST['task_id'];
+
+    $sql = "DELETE FROM tasks WHERE id = $taskId";
+
+    if ($conn->query($sql) === TRUE) {
+        echo json_encode(array('status' => 'success'));
+    }
+
+    $conn->close();
+
+}

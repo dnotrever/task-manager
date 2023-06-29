@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;500;600;700;800&display=swap');
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    letter-spacing: .05rem;
+}
+
+.tasksContainer {
+    width: 75rem;
+}
+
+.display-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tasksContainer {
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+h1 {
+    font-size: 1.6rem;
+}
+
+header span {
+    font-weight: 600;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#taskInsertForm {
+    width: 30%;
+    margin-right: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: flex;
+    margin-bottom: .3rem;
+}
+
+#taskInsertForm input, textarea {
+    border-radius: .3rem;
+    letter-spacing: .1rem;
+    padding: .6rem .8rem;
+    width: 18rem;
+}
+
+textarea {
+    max-height: 12rem;
+    min-height: 4rem;
+    max-width: 18rem;
+    min-width: 18rem;
+}
+
+button {
+    margin: 1rem 0;
+    border: none;
+    border-radius: .5rem;
+    letter-spacing: .1rem;
+    
+    text-transform: uppercase;
+    font-weight: 600;
+    
+    color: #EEE;
+    cursor: pointer;
+}
+
+.tasksList {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.task {
+    display: flex;
+    height: 4.2rem;
+    margin: .5rem 0;
+}
+
+.markTask {
+    align-self: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 5rem;
+    background-color: #FFF;
+    border: .1rem solid #333;
+    margin-right: 1.5rem;
+    cursor: pointer;
+}
+
+.markTask:hover {
+    background-color: #919ff8;
+}
+
+.task h3 {
+    margin-right: 1rem;
+    width: 14rem;
+    display: flex;
+    align-items: center;
+}
+
+.task p {
+    margin-right: 1rem;
+    width: 28rem;
+    display: flex;
+    align-items: center;
+}
+
+.done .markTask {
+    font-size: 1.6rem;
+    margin-bottom: .4rem;
+    border: 0;
+    border-radius: 0;
+}
+
+.done .markTask:hover {
+    background-color: transparent;
+}
+
+.updateTask {
+    align-self: center;
+    margin-right: 1rem;
+    cursor: pointer;
+    color: #2296d4;
+    font-size: 1.3rem;
+}
+
+.deleteTask {
+    align-self: center;
+    cursor: pointer;
+    color: #e53d3d;
+    font-size: 1.3rem;
+}
+
+.tasksList input, .tasksList textarea {
+    border-radius: .3rem;
+    letter-spacing: .1rem;
+    padding: .4rem .6rem;
+}
+
+.tasksList input {
+    width: 12rem;
+}
+
+.tasksList textarea {
+    width: 26rem;
+    max-height: 4rem;
+    min-height: 1rem;
+    max-width: 26rem;
+    min-width: 26rem;
+}
+
+header button {
+    padding: .6rem 1.4rem;
+    background-color: #7e7e81;
+}
+
+header button:hover {
+    background-color: #595964;
+    transition: .3s ease;
+}
+
+main button {
+    padding: .8rem 1.8rem;
+    background-color: #5454f0;
+}
+
+main button:hover {
+    background-color: #2121ce;
+    transition: .3s ease;
+}

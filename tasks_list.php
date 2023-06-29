@@ -2,6 +2,13 @@
 
 include 'db_connection.php';
 
+session_start();
+
+if (!isset($_SESSION["userId"])) {
+    header("Location: index.php");
+    exit;
+}
+
 $userId = $_GET['user_id'];
 
 $sql = "SELECT * FROM tasks WHERE user_id = '$userId'";

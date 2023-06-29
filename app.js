@@ -1,38 +1,43 @@
 $(document).ready(function () {
 
-    // Login
-    $('#loginForm').submit(function (event) {
+    // List Tasks
+    var userId = $('.tasksList').data('user')
 
-        event.preventDefault()
+    $.ajax({
+        url: 'tasks_list.php',
+        method: 'GET',
+        data: { user_id: userId },
+        dataType: 'json',
 
-        const email = $('#email').val()
-        const password = $('#password').val()
+        success: function (tasks) {
 
-        $.post('login.php', { email: email, password: password }, function (response) {
+            tasks.forEach(function (task) {
 
-            response.status === 'success' ?
-                window.location.href = 'tasks.php' :
-                $('#message').text(response.message)
+                var taskDiv = $('<div class="task"></div>').attr('data-task', task.id)
 
-        }, 'json')
+                var markTask = $('.task').find('.markTask')
 
-    })
+                task.status === 'pending' ?
+                    taskDiv.addClass('pending') :
+                    taskDiv.addClass('done')
 
-    // Store User
-    $('#registerForm').submit(function (event) {
+                var checkElement = $('<div class="markTask"></div>')
+                var titleElement = $('<h3></h3>').text(task.title)
+                var descriptionElement = $('<p></p>').text(task.description)
+                var updateElement = $('<span class="updateTask">✎</span>')
+                var deleteElement = $('<span class="deleteTask">✖</span>')
 
-        event.preventDefault()
+                taskDiv.append(checkElement)
+                taskDiv.append(titleElement)
+                taskDiv.append(descriptionElement)
+                taskDiv.append(updateElement)
+                taskDiv.append(deleteElement)
 
-        const email = $('#email').val()
-        const password = $('#password').val()
+                $('.tasksList').append(taskDiv)
 
-        $.post('register.php', { email: email, password: password }, function (response) {
+            })
 
-            response.status === 'success' ?
-                window.location.href = 'index.php' :
-                $('#message').text(response.message)
-
-        }, 'json')
+        }
 
     })
 
@@ -55,51 +60,8 @@ $(document).ready(function () {
 
     })
 
-    // List Tasks
-    $(document).ready(function () {
-
-        var userId = $('.tasksList').data('user')
-
-        $.ajax({
-            url: 'tasks_list.php',
-            method: 'GET',
-            data: { user_id: userId },
-            dataType: 'json',
-
-            success: function (tasks) {
-
-                tasks.forEach(function (task) {
-
-                    var taskDiv = $('<div class="task"></div>').attr('data-task', task.id)
-
-                    if (task.status === 'pending') {
-                        taskDiv.addClass('pending')
-                    } else if (task.status === 'done') {
-                        taskDiv.addClass('done')
-                    }
-
-                    var checkElement = $('<div class="markTask">O</div>')
-                    var titleElement = $('<h3></h3>').text(task.title)
-                    var descriptionElement = $('<p></p>').text(task.description)
-                    var deleteElement = $('<span class="deleteTask">X</span>')
-
-                    taskDiv.append(checkElement)
-                    taskDiv.append(titleElement)
-                    taskDiv.append(descriptionElement)
-                    taskDiv.append(deleteElement)
-
-                    $('.tasksList').append(taskDiv)
-
-                })
-
-            }
-
-        })
-
-    })
-
     // Delete Task
-    $(".tasksList").on("click", ".deleteTask", function() {
+    $(".tasksList").on("click", ".deleteTask", function () {
 
         var taskDiv = $(this).closest(".task")
         var taskId = taskDiv.data("task")
@@ -115,11 +77,15 @@ $(document).ready(function () {
     })
 
     // Check Task
-    $(".tasksList").on("click", ".markTask", function() {
+    $(".tasksList").on("click", ".markTask", function () {
 
         var taskElement = $(this).closest('.task')
         var taskId = taskElement.data('task')
         var status = taskElement.hasClass('pending') ? 'done' : 'pending'
+
+        taskElement.removeClass('pending done').toggleClass(status)
+
+        status === 'done' ? $(this).closest('.markTask').text('✓') : $(this).closest('.markTask').text('')
 
         $.ajax({
             url: 'task_check.php',
@@ -129,9 +95,42 @@ $(document).ready(function () {
                 status: status
             },
 
-            success: function (response) {
-                taskElement.removeClass('pending done').addClass(response.status)
-            },
+            // success: function (response) {
+            //     taskElement.removeClass('pending done').addClass(response.status)
+            // },
+
+        })
+
+    })
+
+    // Update Task
+    $(".tasksList").on("click", ".updateTask", function () {
+
+        var taskElement = $(this).closest('.task')
+        var title = taskElement.find('h3').text()
+        var description = taskElement.find('p').text()
+
+        taskElement.find('h3').html('<input type="text" class="titleInput" value="' + title + '">')
+        taskElement.find("p").html('<textarea class="descriptionInput">' + description + '</textarea>')
+        taskElement.find(".updateTask").replaceWith('<button class="saveUpdate">Salvar</button>');
+
+        taskElement.on("click", ".saveUpdate", function () {
+
+            var updatedTitle = taskElement.find('.titleInput').val()
+            var updatedDesc = taskElement.find('.descriptionInput').val()
+
+            taskElement.find('.titleInput').replaceWith('<h3>' + updatedTitle + '</h3>')
+            taskElement.find('.descriptionInput').replaceWith('<p>' + updatedDesc + '</p>')
+
+            taskElement.find('.saveUpdate').replaceWith('<span class="updateTask">✎</span>')
+
+            $.post('task_update.php', { task_id: taskElement.data('task'), title: updatedTitle, description: updatedDesc }, function (response) {
+
+                if (response.status === 'success') {
+                    window.location.href = 'tasks.php'
+                }
+    
+            }, 'json')
 
         })
 

@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $checkEmailResult = $conn->query($checkEmailQuery);
 
     if ($checkEmailResult->num_rows > 0) {
-        echo json_encode(array('status' => 'error', 'message' => 'O email já está cadastrado.'));
+        echo json_encode(array('status' => 'error', 'message' => 'O email já está sendo utilizado!'));
         exit;
     }
 
@@ -32,32 +32,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="app.js"></script>
+    <script src="guest.js"></script>
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <title>Tasks Manager - Register</title>
 </head>
 <body>
 
-    <h2>Register</h2>
+    <h1>Minhas Tarefas</h1>
 
-    <div id="message"></div>
+    <div class="registerContainer display-flex">
 
-    <form id="registerForm">
-        
-        <div class="form-group">
-            <label>Email</label>
-            <input id="email" type="email" name="email" required>
-        </div>
+        <h2>Cadastrar</h2>
 
-        <div class="form-group">
-            <label>Password</label>
-            <input id="password" type="password" name="password" required>
-        </div>
+        <div id="message"></div>
 
-        <button type="submit">Register</button>
+        <form id="registerForm" class="display-flex">
+            
+            <div class="form-group display-flex">
+                <label>Email</label>
+                <input id="email" type="email" name="email" required>
+            </div>
 
-    </form>
+            <div class="form-group display-flex">
+                <label>Senha</label>
+                <input id="password" type="password" name="password" required>
+            </div>
 
-    <a href="login.php">Already an account? Login!</a>
+            <button type="submit">Register</button>
+
+        </form>
+
+        <a href="index.php">Já possui conta? <b>Login!</b></a>
+
+    </div>
 
 </body>
 </html>
