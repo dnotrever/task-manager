@@ -1,11 +1,6 @@
 <?php
 
-session_start();
-
-if (!isset($_SESSION["userId"])) {
-    header("Location: index.php");
-    exit;
-}
+include 'user_session.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input id="password" type="password" name="password" required>
             </div>
 
-            <button type="submit">Register</button>
+            <button type="submit">Cadastrar</button>
 
         </form>
 

@@ -1,13 +1,7 @@
 <?php
 
+include 'user_session.php';
 include 'db_connection.php';
-
-session_start();
-
-if (!isset($_SESSION["userId"])) {
-    header("Location: index.php");
-    exit;
-}
 
 $userId = $_GET['user_id'];
 
@@ -35,5 +29,4 @@ if ($result->num_rows > 0) {
 $conn->close();
 
 header('Content-Type: application/json');
-
 echo json_encode($tasks);

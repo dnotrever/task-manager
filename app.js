@@ -11,7 +11,11 @@ $(document).ready(function () {
 
         success: function (tasks) {
 
-            tasks.forEach(function (task) {
+            var tasksList = $('.tasksList')
+
+            var doneTasks = $('.doneTasks')
+
+            tasks.forEach(function(task) {
 
                 var taskElement = $('<div class="task"></div>').attr('data-task', task.id)
 
@@ -39,8 +43,13 @@ $(document).ready(function () {
                 taskElement.append(updateElement)
                 taskElement.append(deleteElement)
 
-                $('.tasksList').append(taskElement)
+                if (task.status == 'done') {
+                    doneTasks.append(taskElement)
+                } else {
+                    tasksList.prepend(taskElement)
+                }
 
+                doneTasks.find('#quantity').text(`(${doneTasks.children().length - 1})`)
             })
 
         }
@@ -67,12 +76,16 @@ $(document).ready(function () {
     })
 
     // Delete Task
-    $(".tasksList").on("click", ".deleteTask", function () {
+    $(".showTasks").on("click", ".deleteTask", function () {
 
-        var taskDiv = $(this).closest(".task")
-        var taskId = taskDiv.data("task")
+        var doneTasks = $('.doneTasks')
+        var taskElement = $(this).closest(".task")
 
-        taskDiv.remove()
+        var taskId = taskElement.data("task")
+
+        taskElement.remove()
+
+        doneTasks.find('#quantity').text(`(${doneTasks.children().length - 1})`)
 
         $.ajax({
             url: "task_delete.php",
@@ -83,15 +96,26 @@ $(document).ready(function () {
     })
 
     // Check Task
-    $(".tasksList").on("click", ".markTask", function () {
+    $(".showTasks").on("click", ".markTask", function () {
 
+        var tasksList = $('.tasksList')
+        var doneTasks = $('.doneTasks')
         var taskElement = $(this).closest('.task')
+
         var taskId = taskElement.data('task')
         var status = taskElement.hasClass('pending') ? 'done' : 'pending'
 
         taskElement.removeClass('pending done').toggleClass(status)
 
-        status === 'done' ? $(this).closest('.markTask').text('✓') : $(this).closest('.markTask').text('')
+        if (status === 'done') {
+            $(this).closest('.markTask').text('✓')
+            taskElement.appendTo(doneTasks)
+        } else {
+            $(this).closest('.markTask').text('')
+            taskElement.appendTo(tasksList)
+        }
+
+        doneTasks.find('#quantity').text(`(${doneTasks.children().length - 1})`)
 
         $.ajax({
             url: 'task_check.php',
@@ -106,7 +130,7 @@ $(document).ready(function () {
     })
 
     // Update Task
-    $(".tasksList").on("click", ".updateTask", function () {
+    $(".showTasks").on("click", ".updateTask", function () {
 
         var taskElement = $(this).closest('.task')
         var title = taskElement.find('h3').text()
@@ -114,7 +138,7 @@ $(document).ready(function () {
 
         taskElement.find('.markTask').remove()
         taskElement.find('h3').html('<input type="text" class="titleInput" value="' + title + '">')
-        taskElement.find('p').html('<textarea class="descriptionInput">' + description + '</textarea>')
+        taskElement.find('p').html('<textarea class="descriptionInput" placeholder="Opcional">' + description + '</textarea>')
         taskElement.find('.updateTask').replaceWith('<button class="saveUpdate">Salvar</button>');
 
         taskElement.on("click", ".saveUpdate", function () {
@@ -122,18 +146,22 @@ $(document).ready(function () {
             var updatedTitle = taskElement.find('.titleInput').val()
             var updatedDesc = taskElement.find('.descriptionInput').val()
 
-            taskElement.find('.titleInput').replaceWith('<h3>' + updatedTitle + '</h3>')
-            taskElement.find('.descriptionInput').replaceWith('<p>' + updatedDesc + '</p>')
+            if (updatedTitle) {
 
-            taskElement.find('.saveUpdate').replaceWith('<span class="updateTask">✎</span>')
+                taskElement.find('.titleInput').replaceWith('<h3>' + updatedTitle + '</h3>')
+                taskElement.find('.descriptionInput').replaceWith('<p>' + updatedDesc + '</p>')
 
-            $.post('task_update.php', { task_id: taskElement.data('task'), title: updatedTitle, description: updatedDesc }, function (response) {
+                taskElement.find('.saveUpdate').replaceWith('<span class="updateTask">✎</span>')
 
-                if (response.status === 'success') {
-                    window.location.href = 'tasks.php'
-                }
-    
-            }, 'json')
+                $.post('task_update.php', { task_id: taskElement.data('task'), title: updatedTitle, description: updatedDesc }, function (response) {
+
+                    if (response.status === 'success') {
+                        window.location.href = 'tasks.php'
+                    }
+        
+                }, 'json')
+
+            }
 
         })
 
