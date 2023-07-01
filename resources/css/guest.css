@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;500;600;700;800&display=swap');
-
 body {
     font-family: 'Nunito Sans', sans-serif;
     display: flex;
@@ -7,86 +6,70 @@ body {
     align-items: center;
     letter-spacing: .05rem;
 }
-
 h1 {
     margin-top: 2rem;
     margin-bottom: 4rem;
 }
-
 h1 a {
     text-decoration: none;
     font-size: 1.8rem;
     color: #333;
 }
-
 /* Home */
-
 .homeContainer a {
     border-radius: .5rem;
     text-decoration: none;
     letter-spacing: .05rem;
     font-weight: 600;
 }
-
 .homeContainer a:nth-child(1) {
     padding: .6rem 1.6rem;
     color: #EEE;
     background-color: #5454f0;
 }
-
 .homeContainer a:nth-child(1):hover {
     background-color: #3d3db3;
     transition: .3s ease;
 }
-
 .homeContainer a:nth-child(2) {
     padding: .3rem .8rem;
     margin: 2rem 0;
     border: .1rem solid #333;
     color: #333;
 }
-
 .homeContainer a:nth-child(2):hover {
     background-color: #777;
     border: .1rem solid #777;
     color: #FFF;
     transition: .3s ease;
 }
-
 /* - - - - - - - */
-
 .display-flex {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 .container {
     min-height: 100vh;
 }
-
 h2 {
     margin: 0;
     margin-bottom: 1.5rem;
     font-size: 1.4rem;
 }
-
 #message {
     margin-bottom: 1rem;
     color: #e64141;
     font-weight: 600;
 }
-
 .form-group {
     margin-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
 }
-
 label {
     margin-bottom: .3rem;
 }
-
 input {
     border: .1rem solid #888;
     border-radius: .5rem;
@@ -94,7 +77,6 @@ input {
     padding: .6rem .8rem;
     width: 16rem;
 }
-
 button {
     margin: 1rem 0;
     border: none;
@@ -107,12 +89,10 @@ button {
     color: #EEE;
     cursor: pointer;
 }
-
 button:hover {
     background-color: #2121ce;
     transition: .3s ease;
 }
-
 .container a {
     margin: 1.5rem 0;
     font-weight: 600;
@@ -120,7 +100,6 @@ button:hover {
     text-transform: uppercase;
     color: #666;
 }
-
 .container a:hover {
     color: #111;
     transition: .3s ease;

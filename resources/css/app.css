@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;500;600;700;800&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
-
 body {
     display: flex;
     flex-direction: column;
@@ -8,20 +7,16 @@ body {
     letter-spacing: .05rem;
     margin: 0;
 }
-
 body, input, textarea {
     font-family: 'Nunito Sans', sans-serif;
 }
-
 label {
     display: flex;
     margin-bottom: .3rem;
 }
-
 input {
     font-size: 1.0rem;
 }
-
 input, textarea {
     border: .1rem solid #888;
     border-radius: .3rem;
@@ -29,7 +24,6 @@ input, textarea {
     padding: .6rem .8rem;
     width: 18rem;
 }
-
 textarea {
     font-size: 0.9rem;
     max-height: 12rem;
@@ -37,7 +31,6 @@ textarea {
     max-width: 18rem;
     min-width: 18rem;
 }
-
 button {
     border: none;
     border-radius: .5rem;
@@ -46,12 +39,10 @@ button {
     color: #FFF;
     cursor: pointer;
 }
-
 .container {
     width: 60rem;
     min-height: 100vh;
 }
-
 .display-flex {
     display: flex;
     flex-direction: column;
@@ -59,7 +50,6 @@ button {
 }
 
 /* Header */
-
 header {
     display: flex;
     justify-content: space-between;
@@ -68,71 +58,58 @@ header {
     padding: .5rem 0;
     margin-bottom: 2rem;
 }
-
 h1 {
     font-size: 1.4rem;
 }
-
 header .sideHeader {
     display: flex;
     align-items: center;
 }
-
 header .sideHeader span {
     font-weight: 600;
     margin-right: 3rem;
     color: #555;
     font-size: 0.9rem;
 }
-
 header button {
     padding: .5rem 1.4rem;
     background-color: #7e7e81;
 }
-
 header button:hover {
     background-color: #595964;
     transition: .3s ease;
 }
 
 /* Main */
-
 main {
     display: flex;
     justify-content: space-around;
     width: 100%;
 }
-
 .form-group {
     margin-bottom: 1.5rem;
 }
-
 .taskInsertForm h3 {
     font-size: 1.1rem;
 }
-
 .taskInsertForm label {
     font-size: 0.9rem;
 }
-
 .showTasks {
     display: flex;
     flex-direction: column;
     width: 28rem;
 }
-
 .showTasks h5 {
     color: #555;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 400;
 }
-
 .task {
     display: flex;
     margin: .5rem 0;
-    padding: .5rem;
+    padding: .5rem 0;
 }
-
 .markTask {
     display: flex;
     justify-content: center;
@@ -146,32 +123,31 @@ main {
     margin-right: 1.5rem;
     cursor: pointer;
 }
-
 .markTask:hover {
     background-color: #919ff8;
 }
-
 .taskInfos {
     width: 16rem;
     margin-right: 1rem;
 }
-
 .taskInfos h3, .taskInfos p {
     width: 100%;
     margin: 0;
 }
-
 .taskInfos h3 {
     font-size: 1.1rem;
     margin-bottom: .3rem;
     padding-top: .3rem;
     font-weight: 700;
 }
-
 .taskInfos p {
     font-size: 1.0rem;
 }
-
+.completedDate {
+    margin-top: .5rem;
+    font-size: 0.8rem;
+    color: #777;
+}
 .updateTask, .deleteTask {
     text-align: center;
     width: 1.5rem;
@@ -180,33 +156,27 @@ main {
     cursor: pointer;
     font-size: 1.3rem;
 }
-
 .updateTask {
     color: #2296d4;
 }
-
 .deleteTask {
     color: #e53d3d;
 }
-
 .showTasks input, .showTasks textarea {
     border-radius: .3rem;
     letter-spacing: .1rem;
     padding: .4rem .6rem;
 }
-
 .showTasks input {
     width: 14rem;
     margin-bottom: .5rem;
 }
-
 .showTasks textarea {
     max-width: 14rem;
     min-width: 14rem;
     max-height: 6rem;
     min-height: 3rem;
 }
-
 .saveUpdate {
     display: flex;
     align-items: center;
@@ -217,45 +187,36 @@ main {
     font-size: 0.8rem !important;
     background-color: #3ec43e;
 }
-
 .saveUpdate:hover {
     background-color: #1b961b;
 }
-
-.doneTasks {
+.completedTasks {
     margin-top: 1.5rem;
 }
-
-.doneTasks h4 {
+.completedTasks h4 {
     font-size: 1.0rem;
     color: #333;
     font-weight: 600;
 }
-
-.done .markTask {
+.completed .markTask {
     font-size: 1.6rem;
     border: 0;
     border-radius: 0;
 }
-
-.done .markTask:hover {
+.completed .markTask:hover {
     background-color: transparent;
 }
-
-.done .taskInfos h3 {
+.completed .taskInfos h3 {
     text-decoration: line-through;
     color: #555;
 }
-
-.done .taskInfos p {
+.completed .taskInfos p {
     color: #BBB;
 }
-
 main button {
     padding: .5rem 1.4rem;
     background-color: #5454f0;
 }
-
 main button:hover {
     background-color: #2121ce;
     transition: .3s ease;
