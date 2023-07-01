@@ -1,10 +1,10 @@
 <?php
 
-include 'user_session.php';
+include include $_SERVER['DOCUMENT_ROOT'] . '/middlewares/session.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    include 'db_connection.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/configs/db_connection.php';
 
     $taskId = $_POST['task_id'];
     $title = $_POST['title'];

@@ -1,7 +1,7 @@
 <?php
 
-include 'user_session.php';
-include 'db_connection.php';
+include include $_SERVER['DOCUMENT_ROOT'] . '/middlewares/session.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/configs/db_connection.php';
 
 $userId = $_GET['user_id'];
 

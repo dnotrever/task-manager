@@ -1,41 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="guest.js"></script>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <title>Tasks Manager - Login</title>
-</head>
-<body>
+<?php
+    $title = 'Welcome';
+    ob_start();
+?>
 
-    <h1>Minhas Tarefas</h1>
+<div class="homeContainer display-flex">
 
-    <div class="loginContainer display-flex">
+    <a href="/resources/views/guest/login.php">Faça Login</a>
+    <a href="/resources/views/guest/register.php">Crie uma Conta</a>
 
-        <h2>Login</h2>
+</div>
 
-        <div id="message"></div>
-
-        <form id="loginForm" class="display-flex">
-
-            <div class="form-group">
-                <label>Email</label>
-                <input id="email" type="email" name="email" required autofocus>
-            </div>
-
-            <div class="form-group">
-                <label>Senha</label>
-                <input id="password" type="password" name="password" required>
-            </div>
-
-            <button type="submit">Entrar</button>
-
-        </form>
-
-        <a href="register.php">Crie uma conta</a>
-
-    </div>
-
-</body>
-</html>
+<?php
+    $content = ob_get_clean();
+    include $_SERVER['DOCUMENT_ROOT'] . '/resources/layouts/guest.php';
+?>

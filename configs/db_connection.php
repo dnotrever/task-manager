@@ -8,11 +8,11 @@ $dbname = 'task_manager';
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
-    die("Connection error: " . $conn->connect_error);
+    die('Connection error: ' . $conn->connect_error);
 }
 
-$usersTable = "users";
-$tasksTable = "tasks";
+$usersTable = 'users';
+$tasksTable = 'tasks';
 
 $createUsersTable = "CREATE TABLE IF NOT EXISTS $usersTable (
     id INT AUTO_INCREMENT PRIMARY KEY,

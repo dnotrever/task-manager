@@ -2,7 +2,6 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
 
 body {
-    font-family: 'Nunito Sans', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,53 +9,8 @@ body {
     margin: 0;
 }
 
-.tasksContainer {
-    width: 60rem;
-}
-
-.display-flex {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.tasksContainer {
-    min-height: 100vh;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: .5rem 0;
-    margin-bottom: 2rem;
-}
-
-h1 {
-    font-size: 1.4rem;
-}
-
-header div {
-    display: flex;
-    align-items: center;
-}
-
-header span {
-    font-weight: 600;
-    margin-right: 3rem;
-    color: #555;
-    font-size: 0.9rem;
-}
-
-main {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
+body, input, textarea {
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 label {
@@ -64,12 +18,8 @@ label {
     margin-bottom: .3rem;
 }
 
-#taskInsertForm h3 {
-    font-size: 1.1rem;
-}
-
-#taskInsertForm label {
-    font-size: 0.9rem;
+input {
+    font-size: 1.0rem;
 }
 
 input, textarea {
@@ -81,6 +31,7 @@ input, textarea {
 }
 
 textarea {
+    font-size: 0.9rem;
     max-height: 12rem;
     min-height: 4rem;
     max-width: 18rem;
@@ -96,10 +47,84 @@ button {
     cursor: pointer;
 }
 
+.container {
+    width: 60rem;
+    min-height: 100vh;
+}
+
+.display-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: .5rem 0;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 1.4rem;
+}
+
+header .sideHeader {
+    display: flex;
+    align-items: center;
+}
+
+header .sideHeader span {
+    font-weight: 600;
+    margin-right: 3rem;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+header button {
+    padding: .5rem 1.4rem;
+    background-color: #7e7e81;
+}
+
+header button:hover {
+    background-color: #595964;
+    transition: .3s ease;
+}
+
+/* Main */
+
+main {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.taskInsertForm h3 {
+    font-size: 1.1rem;
+}
+
+.taskInsertForm label {
+    font-size: 0.9rem;
+}
+
 .showTasks {
     display: flex;
     flex-direction: column;
     width: 28rem;
+}
+
+.showTasks h5 {
+    color: #555;
+    font-size: 1.2rem;
+    font-weight: 400;
 }
 
 .task {
@@ -137,13 +162,14 @@ button {
 }
 
 .taskInfos h3 {
-    font-size: 1.0rem;
+    font-size: 1.1rem;
     margin-bottom: .3rem;
     padding-top: .3rem;
+    font-weight: 700;
 }
 
 .taskInfos p {
-    font-size: 0.8rem;
+    font-size: 1.0rem;
 }
 
 .updateTask, .deleteTask {
@@ -175,7 +201,6 @@ button {
 }
 
 .showTasks textarea {
-    width: 14rem;
     max-width: 14rem;
     min-width: 14rem;
     max-height: 6rem;
@@ -197,6 +222,16 @@ button {
     background-color: #1b961b;
 }
 
+.doneTasks {
+    margin-top: 1.5rem;
+}
+
+.doneTasks h4 {
+    font-size: 1.0rem;
+    color: #333;
+    font-weight: 600;
+}
+
 .done .markTask {
     font-size: 1.6rem;
     border: 0;
@@ -214,20 +249,6 @@ button {
 
 .done .taskInfos p {
     color: #BBB;
-}
-
-.doneTasks {
-    margin-top: 1.5rem;
-}
-
-header button {
-    padding: .5rem 1.4rem;
-    background-color: #7e7e81;
-}
-
-header button:hover {
-    background-color: #595964;
-    transition: .3s ease;
 }
 
 main button {
