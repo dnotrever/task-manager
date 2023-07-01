@@ -13,13 +13,13 @@ $(document).ready(function () {
 
             tasks.forEach(function (task) {
 
-                var taskDiv = $('<div class="task"></div>').attr('data-task', task.id)
+                var taskElement = $('<div class="task"></div>').attr('data-task', task.id)
 
-                var markTask = $('.task').find('.markTask')
+                var taskInfos = $('<div class="taskInfos"></div>')
 
                 task.status === 'pending' ?
-                    taskDiv.addClass('pending') :
-                    taskDiv.addClass('done')
+                    taskElement.addClass('pending') :
+                    taskElement.addClass('done')
 
                 var checkElement = $('<div class="markTask"></div>')
                 var titleElement = $('<h3></h3>').text(task.title)
@@ -27,13 +27,19 @@ $(document).ready(function () {
                 var updateElement = $('<span class="updateTask">✎</span>')
                 var deleteElement = $('<span class="deleteTask">✖</span>')
 
-                taskDiv.append(checkElement)
-                taskDiv.append(titleElement)
-                taskDiv.append(descriptionElement)
-                taskDiv.append(updateElement)
-                taskDiv.append(deleteElement)
+                taskElement.hasClass('done') ?
+                    checkElement.text('✓') :
+                    checkElement.text('')
 
-                $('.tasksList').append(taskDiv)
+                taskInfos.append(titleElement)
+                taskInfos.append(descriptionElement)
+ 
+                taskElement.append(checkElement)
+                taskElement.append(taskInfos)
+                taskElement.append(updateElement)
+                taskElement.append(deleteElement)
+
+                $('.tasksList').append(taskElement)
 
             })
 
@@ -95,10 +101,6 @@ $(document).ready(function () {
                 status: status
             },
 
-            // success: function (response) {
-            //     taskElement.removeClass('pending done').addClass(response.status)
-            // },
-
         })
 
     })
@@ -110,9 +112,10 @@ $(document).ready(function () {
         var title = taskElement.find('h3').text()
         var description = taskElement.find('p').text()
 
+        taskElement.find('.markTask').remove()
         taskElement.find('h3').html('<input type="text" class="titleInput" value="' + title + '">')
-        taskElement.find("p").html('<textarea class="descriptionInput">' + description + '</textarea>')
-        taskElement.find(".updateTask").replaceWith('<button class="saveUpdate">Salvar</button>');
+        taskElement.find('p').html('<textarea class="descriptionInput">' + description + '</textarea>')
+        taskElement.find('.updateTask').replaceWith('<button class="saveUpdate">Salvar</button>');
 
         taskElement.on("click", ".saveUpdate", function () {
 

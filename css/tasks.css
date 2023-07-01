@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
 
 body {
     font-family: 'Nunito Sans', sans-serif;
@@ -6,10 +7,11 @@ body {
     flex-direction: column;
     align-items: center;
     letter-spacing: .05rem;
+    margin: 0;
 }
 
 .tasksContainer {
-    width: 75rem;
+    width: 60rem;
 }
 
 .display-flex {
@@ -27,26 +29,30 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    padding: .5rem 0;
     margin-bottom: 3rem;
 }
 
 h1 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+}
+
+header div {
+    display: flex;
+    align-items: center;
 }
 
 header span {
     font-weight: 600;
+    margin-right: 3rem;
+    color: #555;
+    font-size: 0.9rem;
 }
 
 main {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
-}
-
-#taskInsertForm {
-    width: 30%;
-    margin-right: 2rem;
 }
 
 .form-group {
@@ -58,7 +64,16 @@ label {
     margin-bottom: .3rem;
 }
 
-#taskInsertForm input, textarea {
+#taskInsertForm h3 {
+    font-size: 1.1rem;
+}
+
+#taskInsertForm label {
+    font-size: 0.9rem;
+}
+
+input, textarea {
+    border: .1rem solid #888;
     border-radius: .3rem;
     letter-spacing: .1rem;
     padding: .6rem .8rem;
@@ -73,38 +88,39 @@ textarea {
 }
 
 button {
-    margin: 1rem 0;
     border: none;
     border-radius: .5rem;
     letter-spacing: .1rem;
-    
-    text-transform: uppercase;
     font-weight: 600;
-    
-    color: #EEE;
+    color: #FFF;
     cursor: pointer;
 }
 
 .tasksList {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 26rem;
 }
 
 .task {
     display: flex;
-    height: 4.2rem;
+    justify-content: space-between;
     margin: .5rem 0;
+    width: 100%;
+    padding: .5rem;
 }
 
 .markTask {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     align-self: center;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.3rem;
+    height: 1.3rem;
     border-radius: 5rem;
     background-color: #FFF;
     border: .1rem solid #333;
-    margin-right: 1.5rem;
+    margin: 0 0.5rem;
     cursor: pointer;
 }
 
@@ -112,23 +128,27 @@ button {
     background-color: #919ff8;
 }
 
-.task h3 {
-    margin-right: 1rem;
-    width: 14rem;
-    display: flex;
-    align-items: center;
+.taskInfos {
+    width: 16rem;
 }
 
-.task p {
-    margin-right: 1rem;
-    width: 28rem;
-    display: flex;
-    align-items: center;
+.taskInfos h3, .taskInfos p {
+    width: 100%;
+    margin: 0;
+}
+
+.taskInfos h3 {
+    font-size: 1.0rem;
+    margin-bottom: .3rem;
+    padding-top: .3rem;
+}
+
+.taskInfos p {
+    font-size: 0.8rem;
 }
 
 .done .markTask {
     font-size: 1.6rem;
-    margin-bottom: .4rem;
     border: 0;
     border-radius: 0;
 }
@@ -137,19 +157,42 @@ button {
     background-color: transparent;
 }
 
-.updateTask {
+.done .taskInfos h3 {
+    text-decoration: line-through;
+    color: #555;
+}
+
+.done .taskInfos p {
+    color: #BBB;
+}
+
+.updateTask, .deleteTask {
     align-self: center;
-    margin-right: 1rem;
     cursor: pointer;
-    color: #2296d4;
     font-size: 1.3rem;
 }
 
+.updateTask {
+    color: #2296d4;
+}
+
 .deleteTask {
-    align-self: center;
-    cursor: pointer;
     color: #e53d3d;
-    font-size: 1.3rem;
+}
+
+.saveUpdate {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    height: 1.8rem;
+    margin: 0 .5rem;
+    padding: 0 1rem;
+    font-size: 0.8rem !important;
+    background-color: #3ec43e;
+}
+
+.saveUpdate:hover {
+    background-color: #1b961b;
 }
 
 .tasksList input, .tasksList textarea {
@@ -159,19 +202,20 @@ button {
 }
 
 .tasksList input {
-    width: 12rem;
+    width: 14rem;
+    margin-bottom: .5rem;
 }
 
 .tasksList textarea {
-    width: 26rem;
-    max-height: 4rem;
-    min-height: 1rem;
-    max-width: 26rem;
-    min-width: 26rem;
+    width: 14rem;
+    max-height: 8rem;
+    min-height: 4rem;
+    max-width: 14rem;
+    min-width: 14rem;
 }
 
 header button {
-    padding: .6rem 1.4rem;
+    padding: .5rem 1.4rem;
     background-color: #7e7e81;
 }
 
@@ -181,7 +225,7 @@ header button:hover {
 }
 
 main button {
-    padding: .8rem 1.8rem;
+    padding: .5rem 1.4rem;
     background-color: #5454f0;
 }
 

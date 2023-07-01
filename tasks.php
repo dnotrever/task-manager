@@ -41,11 +41,15 @@ $conn->close();
 
             <h1>Minhas Tarefas</h1>
 
-            <span><?php echo $email ?></span>
+            <div>
 
-            <form action="logout.php" method="POST">
-                <button type="submit">Logout</button>
-            </form>
+                <span><?php echo $email ?></span>
+
+                <form action="logout.php" method="POST">
+                    <button type="submit">Logout</button>
+                </form>
+
+            </div>
 
         </header>
 
@@ -61,7 +65,7 @@ $conn->close();
 
                     <label>Título</label>
 
-                    <input id="title" type="text" name="title">
+                    <input id="title" type="text" name="title" required autofocus>
 
                 </div>
 
@@ -69,7 +73,7 @@ $conn->close();
 
                     <label>Descrição</label>
 
-                    <textarea id="description" type="text" name="description"></textarea>
+                    <textarea id="description" type="text" name="description" placeholder="Opcional"></textarea>
 
                 </div>
 

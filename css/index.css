@@ -30,6 +30,8 @@ h2 {
 
 .form-group {
     margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
 }
 
 label {
@@ -37,6 +39,7 @@ label {
 }
 
 input {
+    border: .1rem solid #888;
     border-radius: .5rem;
     letter-spacing: .1rem;
     padding: .6rem .8rem;
@@ -73,22 +76,3 @@ a:hover {
     color: #111;
     transition: .3s ease;
 }
-
-
-/* M E D I A S */
-
-@media (max-width: 575px) {}
-
-/* @media (max-width: 767px) {} */
-
-@media (min-width: 576px) {}
-
-@media (min-width: 768px) {}
-
-@media (min-width: 992px) {}
-
-@media (min-width: 1200px) {}
-
-@media (min-width: 1400px) {}
-
-@media (min-width: 1800px) {}
