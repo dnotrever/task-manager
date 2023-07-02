@@ -99,6 +99,7 @@ main {
     display: flex;
     flex-direction: column;
     width: 28rem;
+    margin-bottom: 5rem;
 }
 .showTasks h5 {
     color: #555;
@@ -191,12 +192,13 @@ main {
     background-color: #1b961b;
 }
 .completedTasks {
-    margin-top: 1.5rem;
+    margin-top: 2.0rem;
 }
 .completedTasks h4 {
     font-size: 1.0rem;
     color: #333;
     font-weight: 600;
+    margin: 0;
 }
 .completed .markTask {
     font-size: 1.6rem;
@@ -220,4 +222,15 @@ main button {
 main button:hover {
     background-color: #2121ce;
     transition: .3s ease;
+}
+
+/* Credit */
+.credit {
+    margin: 3.0rem 0;
+    color: #333;
+    font-size: 0.8rem;
+}
+.credit a {
+    text-decoration: none;
+    font-weight: 600;
 }

@@ -37,7 +37,10 @@
                 <textarea id="description" type="text" name="description" placeholder="Opcional"></textarea>
             </div>
             <button type="submit">Adicionar</button>
-            <div id="message"></div>
+            <div class="credit">
+                Development by
+                <a href="https://github.com/dnotrever" target="_blank">Everton D. Rosa</a>
+            </div>
         </form>
         <div class="showTasks">
             <div class="tasksList" data-user="<?php echo $userId ?>"></div>

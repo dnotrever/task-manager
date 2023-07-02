@@ -12,5 +12,9 @@
         <a href="/index.php">Minhas Tarefas</a>
     </h1>
     <?php echo $content; ?>
+    <footer>
+        Development by
+        <a href="https://github.com/dnotrever" target="_blank">Everton D. Rosa</a>
+    </footer>
 </body>
 </html>
